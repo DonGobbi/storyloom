@@ -26,11 +26,12 @@ class GroqService {
   private baseUrl: string;
 
   constructor() {
+    // For GitHub Pages deployment, we'll use a placeholder message when the API key isn't available
     this.apiKey = process.env.REACT_APP_GROQ_API_KEY || '';
     this.baseUrl = 'https://api.groq.com/openai/v1/chat/completions';
     
     if (!this.apiKey) {
-      console.error('GROQ API key is not set. Please check your .env file.');
+      console.warn('GROQ API key is not set. AI features will be disabled in the deployed version.');
     }
   }
 
@@ -41,6 +42,11 @@ class GroqService {
    * @returns The generated text
    */
   async generateText(prompt: string, systemPrompt?: string): Promise<string> {
+    // If API key is not available (like in GitHub Pages deployment), return a placeholder message
+    if (!this.apiKey) {
+      return 'AI content generation is not available in the deployed demo version. To use this feature, please run the application locally with your own API key.';
+    }
+    
     try {
       const messages: GroqMessage[] = [];
       
