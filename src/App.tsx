@@ -1,13 +1,20 @@
 import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { StoryProvider } from './contexts/StoryContext';
 import Game from './components/core/Game';
+import StoryEditor from './components/core/StoryEditor';
 import './App.css';
 
 function App() {
   return (
     <div className="App">
       <StoryProvider>
-        <Game />
+        <Router>
+          <Routes>
+            <Route path="/" element={<Game />} />
+            <Route path="/editor" element={<StoryEditor />} />
+          </Routes>
+        </Router>
       </StoryProvider>
     </div>
   );
