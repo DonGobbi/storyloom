@@ -7,6 +7,14 @@ const EditorContainer = styled.div`
   max-width: 1200px;
   margin: 0 auto;
   padding: 20px;
+  
+  @media (max-width: 768px) {
+    padding: 15px;
+  }
+  
+  @media (max-width: 480px) {
+    padding: 10px;
+  }
 `;
 
 const Header = styled.header`
@@ -38,8 +46,17 @@ const ContentSection = styled.section`
   grid-template-columns: 1fr 1fr;
   gap: 20px;
   
-  @media (max-width: 768px) {
+  @media (max-width: 1024px) {
     grid-template-columns: 1fr;
+    gap: 30px;
+  }
+  
+  @media (max-width: 768px) {
+    gap: 20px;
+  }
+  
+  @media (max-width: 480px) {
+    gap: 15px;
   }
 `;
 
@@ -47,12 +64,36 @@ const AISection = styled.div`
   max-height: 100vh;
   overflow-y: auto;
   padding-right: 10px;
+  
+  @media (max-width: 1024px) {
+    max-height: 50vh;
+  }
+  
+  @media (max-width: 768px) {
+    padding-right: 5px;
+  }
+  
+  @media (max-width: 480px) {
+    padding-right: 0;
+  }
 `;
 
 const EditorSection = styled.div`
   max-height: 100vh;
   overflow-y: auto;
   padding-right: 10px;
+  
+  @media (max-width: 1024px) {
+    max-height: none;
+  }
+  
+  @media (max-width: 768px) {
+    padding-right: 5px;
+  }
+  
+  @media (max-width: 480px) {
+    padding-right: 0;
+  }
 `;
 
 const StoryPreview = styled.div`
@@ -60,6 +101,18 @@ const StoryPreview = styled.div`
   padding: 20px;
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-top: 20px;
+  
+  @media (max-width: 768px) {
+    padding: 15px;
+    margin-top: 15px;
+  }
+  
+  @media (max-width: 480px) {
+    padding: 10px;
+    border-radius: 6px;
+    margin-top: 10px;
+  }
 `;
 
 const SceneEditor = styled.div`
@@ -67,6 +120,15 @@ const SceneEditor = styled.div`
   padding: 20px;
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  
+  @media (max-width: 768px) {
+    padding: 15px;
+  }
+  
+  @media (max-width: 480px) {
+    padding: 10px;
+    border-radius: 6px;
+  }
 `;
 
 const TextArea = styled.textarea`

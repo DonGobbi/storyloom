@@ -7,6 +7,15 @@ const GeneratorContainer = styled.div`
   background-color: #f5f5f5;
   border-radius: 8px;
   margin-bottom: 20px;
+  
+  @media (max-width: 768px) {
+    padding: 15px;
+  }
+  
+  @media (max-width: 480px) {
+    padding: 12px;
+    border-radius: 6px;
+  }
 `;
 
 const InputGroup = styled.div`
@@ -25,6 +34,17 @@ const TextArea = styled.textarea`
   border: 1px solid #ccc;
   border-radius: 4px;
   min-height: 100px;
+  
+  @media (max-width: 768px) {
+    padding: 8px;
+    min-height: 80px;
+  }
+  
+  @media (max-width: 480px) {
+    padding: 6px;
+    min-height: 60px;
+    font-size: 0.9rem;
+  }
 `;
 
 const Input = styled.input`
@@ -32,6 +52,15 @@ const Input = styled.input`
   padding: 10px;
   border: 1px solid #ccc;
   border-radius: 4px;
+  
+  @media (max-width: 768px) {
+    padding: 8px;
+  }
+  
+  @media (max-width: 480px) {
+    padding: 6px;
+    font-size: 0.9rem;
+  }
 `;
 
 const Button = styled.button`
@@ -60,6 +89,16 @@ const Button = styled.button`
   }
 `;
 
+const ButtonContainer = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  
+  @media (max-width: 480px) {
+    gap: 8px;
+  }
+`;
+
 const ResultContainer = styled.div`
   margin-top: 20px;
   padding: 15px;
@@ -81,6 +120,37 @@ const ResultContainer = styled.div`
     display: flex;
     align-items: center;
     flex-wrap: wrap;
+  }
+  
+  @media (max-width: 768px) {
+    margin-top: 15px;
+    padding: 12px;
+    margin-bottom: 15px;
+    
+    ul {
+      max-height: 250px;
+      padding-left: 15px;
+    }
+    
+    li {
+      margin-bottom: 8px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    margin-top: 12px;
+    padding: 10px;
+    margin-bottom: 12px;
+    font-size: 0.9rem;
+    
+    ul {
+      max-height: 200px;
+      padding-left: 10px;
+    }
+    
+    li {
+      margin-bottom: 6px;
+    }
   }
 `;
 
@@ -203,7 +273,7 @@ const AIStoryGenerator: React.FC<AIStoryGeneratorProps> = ({
         />
       </InputGroup>
       
-      <div>
+      <ButtonContainer>
         <Button 
           onClick={handleGenerateStory} 
           disabled={isLoading || !currentScene}
@@ -224,7 +294,7 @@ const AIStoryGenerator: React.FC<AIStoryGeneratorProps> = ({
         >
           Generate Choices
         </Button>
-      </div>
+      </ButtonContainer>
       
       {generatedContent && (
         <ResultContainer>

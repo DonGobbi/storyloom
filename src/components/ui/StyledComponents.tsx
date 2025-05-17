@@ -23,6 +23,11 @@ export const GameContainer = styled.div`
   flex-direction: column;
   position: relative;
   overflow: hidden;
+  
+  @media (max-width: 768px) {
+    height: 100vh; /* Ensure full height on mobile */
+    overflow-y: auto; /* Allow scrolling on smaller screens if needed */
+  }
 `;
 
 export const BackgroundImage = styled.div<{ $background: string }>`
@@ -51,6 +56,16 @@ export const DialogueBox = styled.div`
   display: flex;
   flex-direction: column;
   animation: ${slideUp} 0.5s ease-out;
+  
+  @media (max-width: 768px) {
+    padding: 15px;
+    min-height: 180px;
+  }
+  
+  @media (max-width: 480px) {
+    padding: 10px;
+    min-height: 150px;
+  }
 `;
 
 export const CharacterName = styled.div`
@@ -58,12 +73,34 @@ export const CharacterName = styled.div`
   font-size: 1.2rem;
   margin-bottom: 10px;
   color: #FFD700;
+  
+  @media (max-width: 768px) {
+    font-size: 1.1rem;
+    margin-bottom: 8px;
+  }
+  
+  @media (max-width: 480px) {
+    font-size: 1rem;
+    margin-bottom: 5px;
+  }
 `;
 
 export const DialogueText = styled.div`
   font-size: 1.1rem;
   line-height: 1.5;
   margin-bottom: 20px;
+  
+  @media (max-width: 768px) {
+    font-size: 1rem;
+    line-height: 1.4;
+    margin-bottom: 15px;
+  }
+  
+  @media (max-width: 480px) {
+    font-size: 0.9rem;
+    line-height: 1.3;
+    margin-bottom: 10px;
+  }
 `;
 
 export const ChoicesContainer = styled.div`
@@ -85,11 +122,24 @@ export const ChoiceButton = styled.button`
   font-size: 1rem;
   animation: ${fadeIn} 0.5s ease-out;
   transform-origin: center;
+  width: 100%;
+  max-width: 500px;
 
   &:hover {
     background-color: rgba(70, 130, 180, 1);
     animation: ${pulse} 0.5s infinite;
     box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+  }
+  
+  @media (max-width: 768px) {
+    padding: 8px 12px;
+    font-size: 0.95rem;
+    max-width: 100%;
+  }
+  
+  @media (max-width: 480px) {
+    padding: 8px 10px;
+    font-size: 0.9rem;
   }
 `;
 
@@ -111,6 +161,21 @@ export const CharacterAvatar = styled.div<{ $avatar: string }>`
   &:hover {
     transform: scale(1.05);
   }
+  
+  @media (max-width: 768px) {
+    bottom: 200px;
+    left: 30px;
+    width: 120px;
+    height: 120px;
+  }
+  
+  @media (max-width: 480px) {
+    bottom: 170px;
+    left: 20px;
+    width: 90px;
+    height: 90px;
+    border-width: 2px;
+  }
 `;
 
 export const ContinueButton = styled.button`
@@ -126,6 +191,16 @@ export const ContinueButton = styled.button`
 
   &:hover {
     background-color: rgba(255, 215, 0, 1);
+  }
+  
+  @media (max-width: 768px) {
+    padding: 7px 12px;
+    font-size: 0.9rem;
+  }
+  
+  @media (max-width: 480px) {
+    padding: 6px 10px;
+    font-size: 0.85rem;
   }
 `;
 
@@ -145,6 +220,20 @@ export const RestartButton = styled.button`
   &:hover {
     background-color: rgba(220, 20, 60, 1);
   }
+  
+  @media (max-width: 768px) {
+    top: 15px;
+    right: 15px;
+    padding: 6px 12px;
+    font-size: 0.9rem;
+  }
+  
+  @media (max-width: 480px) {
+    top: 10px;
+    right: 10px;
+    padding: 5px 10px;
+    font-size: 0.8rem;
+  }
 `;
 
 export const TitleScreen = styled.div`
@@ -159,6 +248,16 @@ export const TitleScreen = styled.div`
   z-index: 30;
   position: relative;
   background-color: #0a1128;
+  padding: 20px;
+  box-sizing: border-box;
+  
+  @media (max-width: 768px) {
+    padding: 15px;
+  }
+  
+  @media (max-width: 480px) {
+    padding: 10px;
+  }
 `;
 
 export const TitleText = styled.h1`
@@ -199,4 +298,16 @@ export const Subtitle = styled.p`
   margin-bottom: 40px;
   max-width: 600px;
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+  
+  @media (max-width: 768px) {
+    font-size: 1.1rem;
+    margin-bottom: 30px;
+    max-width: 90%;
+  }
+  
+  @media (max-width: 480px) {
+    font-size: 0.95rem;
+    margin-bottom: 25px;
+    max-width: 95%;
+  }
 `;
