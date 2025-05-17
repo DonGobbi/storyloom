@@ -26,12 +26,16 @@ class GroqService {
   private baseUrl: string;
 
   constructor() {
-    // For GitHub Pages deployment, we'll use a placeholder message when the API key isn't available
+    // NEVER hardcode API keys - only use environment variables
     this.apiKey = process.env.REACT_APP_GROQ_API_KEY || '';
     this.baseUrl = 'https://api.groq.com/openai/v1/chat/completions';
     
-    if (!this.apiKey) {
-      console.warn('GROQ API key is not set. AI features will be disabled in the deployed version.');
+    // In production/deployed versions, we'll disable the API features
+    if (process.env.NODE_ENV === 'production') {
+      this.apiKey = ''; // Force empty in production to prevent leaks
+      console.warn('AI features are disabled in the production/deployed version.');
+    } else if (!this.apiKey) {
+      console.warn('GROQ API key is not set in environment variables. AI features will be disabled.');
     }
   }
 
