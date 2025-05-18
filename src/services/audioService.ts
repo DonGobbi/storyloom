@@ -25,17 +25,13 @@ const audio = new Audio(`${baseUrl}/sounds/${url}`);
   preloadCommonSounds(): void {
     if (this.soundsLoaded) return;
     
-    // Create dummy audio files in memory
-    const dummyAudio = new Audio();
-    dummyAudio.src = 'data:audio/mp3;base64,SUQzBAAAAAABEVRYWFgAAAAtAAADY29tbWVudABCaWdTb3VuZEJhbmsuY29tIC8gTGFTb25vdGhlcXVlLm9yZwBURU5DAAAAHQAAA1N3aXRjaCBQbHVzIMKpIE5DSCBTb2Z0d2FyZQBUSVQyAAAABgAAAzIyMzUAVFNTRQAAAA8AAANMYXZmNTcuODMuMTAwAAAAAAAAAAAAAAD/80DEAAAAA0gAAAAATEFNRTMuMTAwVVVVVVVVVVVVVUxBTUUzLjEwMFVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVf/zQsRbAAADSAAAAABVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVf/zQMSkAAADSAAAAABVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV';
-    
-    // Create basic sounds
-    this.sounds.set('click', dummyAudio);
-    this.sounds.set('transition', dummyAudio);
-    this.sounds.set('choice', dummyAudio);
-    
-    this.soundsLoaded = true;
-    console.log('Preloaded common sounds');
+    const baseUrl = process.env.PUBLIC_URL || '';
+this.loadSound('click', 'click.mp3');
+this.loadSound('transition', 'transition.mp3');
+this.loadSound('choice', 'choice.mp3');
+
+this.soundsLoaded = true;
+console.log('Preloaded common sounds');
   }
 
   playSound(id: string): void {
