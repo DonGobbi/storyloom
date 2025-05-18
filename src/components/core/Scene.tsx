@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useStory } from '../../contexts/StoryContext';
+import { useAudio } from '../../contexts/AudioContext';
 import { characters } from '../../data/storyData';
 import {
   BackgroundImage,
@@ -16,6 +17,7 @@ import TypewriterText from '../ui/TextAnimation';
 
 const Scene: React.FC = () => {
   const { currentScene, makeChoice } = useStory();
+  const { playSound } = useAudio();
   const [showChoices, setShowChoices] = useState(false);
   
   // Simple flag to prevent multiple clicks
@@ -30,7 +32,12 @@ const Scene: React.FC = () => {
     
     // Hide choices initially until typewriter completes
     setShowChoices(false);
-  }, [currentScene && currentScene.id]);
+    
+    // Play scene transition sound if not the first scene
+    if (currentScene.id !== 'start') {
+      playSound('transition');
+    }
+  }, [currentScene && currentScene.id, playSound]);
 
   if (!currentScene) {
     return <div>Loading scene...</div>;
@@ -45,6 +52,9 @@ const Scene: React.FC = () => {
     if (isProcessing || !showChoices) return;
     
     if (currentScene && currentScene.nextSceneId) {
+      // Play transition sound
+      playSound('transition');
+      
       // Set processing flag to prevent multiple clicks
       setIsProcessing(true);
       
@@ -56,6 +66,9 @@ const Scene: React.FC = () => {
   const handleChoiceClick = (nextSceneId: string) => {
     // Prevent clicking if already processing or if choices aren't shown yet
     if (isProcessing || !showChoices) return;
+    
+    // Play choice sound
+    playSound('choice');
     
     // Set processing flag to prevent multiple clicks
     setIsProcessing(true);
