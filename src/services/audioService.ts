@@ -8,7 +8,8 @@ class AudioService {
   loadSound(id: string, url: string): void {
     try {
       console.log(`Loading sound: ${id} from /sounds/${url}`);
-      const audio = new Audio(`/sounds/${url}`);
+      const baseUrl = process.env.PUBLIC_URL || '';
+const audio = new Audio(`${baseUrl}/sounds/${url}`);
       
       // Add error handler
       audio.addEventListener('error', (e) => {
@@ -69,7 +70,8 @@ class AudioService {
       }
       
       console.log(`Loading music: ${url}`);
-      this.music = new Audio(`/music/${url}`);
+      const baseUrl = process.env.PUBLIC_URL || '';
+this.music = new Audio(`${baseUrl}/music/${url}`);
       this.music.loop = loop;
       
       // Add error handler

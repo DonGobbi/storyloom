@@ -22,12 +22,9 @@ const Game: React.FC = () => {
     setShowTitle(true);
   };
   
-  // Play title screen music when the game loads
-  useEffect(() => {
-    if (showTitle) {
-      playMusic('title.mp3');
-    }
-  }, [showTitle, playMusic]);
+  // We'll only play music after user interaction
+  // This is handled in the handleStart and handleRestart functions
+  // No automatic music playback on load to avoid browser restrictions
 
   return (
     <GameContainer>
