@@ -21,7 +21,7 @@ function App() {
               <Route path="/editor" element={<StoryEditor />} />
             </Routes>
             <AudioControls />
-            {showDebug && <AudioDebugPanel />}
+            
           </Router>
         </StoryProvider>
       </AudioProvider>
